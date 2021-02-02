@@ -1,3 +1,4 @@
+from helper_functions import title_case
 class Song:
 
   def __init__(self, title):
@@ -12,28 +13,7 @@ class Song:
   
   # TODO: Create a setter method for the next_song attribute, called set_title. Make sure titles are type cased to strings and are Title Cased.
   def set_title(self, title):
-    #   1. List of all words that have to be in lower case.
-    #   2. Check if any of the words in the title parameter is in the words that need to be lower case.
-    #   3. If yes ignore the word, if no capitalize its first character.
-    articles = ["a", "an", "the"]
-    conjuctions = ["for", "and", "nor", "but", "or", "yet", "so"]
-    prepositions = ["about", "above", "across", "after", "against", "among", "around", "at", "before", "behind", "below", "beside", "between", "by", "down", "during", "for", "from", "in", "inside", "into", "near", "of", "off", "on", "out", "over", "through", "to", "toward", "under", "up", "with"]
-    lowercase_words = articles + conjuctions + prepositions
-
-    words_in_title = title.split(" ")    
-    reformatted_title = ""
-
-    for word in words_in_title:
-
-        if word == words_in_title[0]:
-            reformatted_title += word.title() + " "
-        elif word in lowercase_words:
-            reformatted_title += word + " "
-        else:
-            reformatted_title += word.title() + " "
-    
-    reformatted_title = reformatted_title[:-1] # Getting rid of last space character at the end.
-    self.__title = reformatted_title
+    self.__title = title_case(title)
 
 
   # TODO: Create a getter method for the next_song attribute, called get_next_song
