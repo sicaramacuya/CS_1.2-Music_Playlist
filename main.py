@@ -1,4 +1,5 @@
 from Playlist import Playlist
+from helper_functions import webscrape__spotify_top200
 
 playlist = Playlist()
 
@@ -16,6 +17,7 @@ while True:
   3: To remove a song from playlist
   4: To search for song in playlist
   5: Return the length of the playlist
+  6: Add top 200 songs from spotify to playlist
   =====================================
 
   ''')
@@ -57,6 +59,15 @@ while True:
   elif user_selection == 5:
     print(f"This set list has {playlist.length()} songs.")
 
+  # Option 6: To add the top 200 songs on spotify to playlist
+  elif user_selection == 6:
+    top_200_global_songs = webscrape__spotify_top200()
+    top_200_global_songs.reverse()                              # To have the linked list ordered from most to least popular
+    for song in top_200_global_songs:
+        playlist.add_song(song)
+
+    print(f"Top 200 songs added to the playlist.")
+    
   # Message for invalid input
   else:
     print('That is not a valid option. Try again.\n')

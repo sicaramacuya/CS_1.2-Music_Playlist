@@ -1,3 +1,7 @@
+from bs4 import BeautifulSoup
+import requests
+import pandas as pd
+
 def title_case(title):
     """This function will return a string formated to be Title Cased."""
 
@@ -24,3 +28,18 @@ def title_case(title):
     reformatted_title = reformatted_title[:-1] # Getting rid of last space character at the end.
 
     return reformatted_title
+
+def webscrape__spotify_top200():
+    """This function will collect the Top 200 songs globaly listed in Spotify and return it as a list."""
+
+    url = "https://spotifycharts.com/regional/global/daily/latest"
+    page = requests.get(url)
+
+    page_content = BeautifulSoup(page.content, 'html.parser')
+
+    song_titles = []
+    for title in page_content.find_all('strong'):
+        title = title.get_text()
+        song_titles.append(title)
+
+    return song_titles
