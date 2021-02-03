@@ -2,7 +2,7 @@ from helper_functions import title_case
 class Song:
 
   def __init__(self, title):
-      self.__title = title
+      self.__title = title_case(title)
       self.__next_song = None
 
 
@@ -37,11 +37,11 @@ class Song:
     return f'{self.__title} -> {self.__next_song}'
 
 if __name__ == "__main__":
-    song_one = Song("The quick brown fox jumps over")
+    song_one = Song("the quick brown fox jumps over")
+    print(song_one.get_title())
+    # song_one.set_title("The quick brown fox jumps over")
     # print(song_one.get_title())
-    song_one.set_title("The quick brown fox jumps over")
+    # song_one.set_title("a tale of two cities")
     # print(song_one.get_title())
-    song_one.set_title("a tale of two cities")
-    # print(song_one.get_title())
-    print(song_one.__str__())
-    print(song_one.__repr__())
+    # print(song_one.__str__())
+    # print(song_one.__repr__())
